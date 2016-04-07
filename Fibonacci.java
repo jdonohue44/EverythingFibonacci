@@ -32,7 +32,7 @@ public class Fibonacci{
     return f3;
   }
   
-  //O(1)
+  //O(3)
   public static long formulaicFib(int n){
     double num = Math.pow((1+Math.sqrt(5)),(double)n) - Math.pow((1-Math.sqrt(5)),(double)n);
     double den = Math.pow(2,(double)n) * Math.sqrt(5);

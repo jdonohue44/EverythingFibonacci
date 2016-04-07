@@ -3,51 +3,52 @@ public class Fibonacci{
 
   public static void main(String[] args){
     Scanner s = new Scanner(System.in);
-    HashMap<Integer,Integer> memo = new HashMap<Integer,Integer>();
     System.out.println("Which element (0-45) of the Fibonacci sequence would you like?");
     int n = s.nextInt();
     
     System.out.println(formulaicFib(n));
-    System.out.println(memoizedFib(n,memo));
+    System.out.println(memoizedFib(n));
     System.out.println(iterativeFib(n));
     System.out.println(recursiveFib(n));
   }
   
+  //O(P^n) where P = golden ratio = (1 + sqrt(5))/2
   public static long recursiveFib(int n){
-    if(n==0){return 0;}
-    if(n==1){return 1;}
+    if(n<=2){return 1;}
     return recursiveFib(n-2)+recursiveFib(n-1);
   }
   
+  //O(n) space-optimized
   public static long iterativeFib(int n){
-    long n1 = 0;
-    long n2 = 1;
-    long n3 = 0;
-    int ctr = 1;
-    while(ctr < n){
-         n3 = n1+n2;
-         n1 = n2;
-         n2 = n3;
-         ctr ++;
+    long f1 = 1;
+    long f2 = 1;
+    long f3 = 0;
+    if(n<=2){return 1;}
+    for(int i = 2; i < n; i++){
+         f3 = f1+f2;
+         f1 = f2;
+         f2 = f3;
     }
-    return n3;
+    return f3;
   }
   
+  //O(1)
   public static long formulaicFib(int n){
     double num = Math.pow((1+Math.sqrt(5)),(double)n) - Math.pow((1-Math.sqrt(5)),(double)n);
     double den = Math.pow(2,(double)n) * Math.sqrt(5);
     return (long)Math.floor(num/den);
   }
   
+  //O(n) keeps record of solutions
   @SuppressWarnings("unchecked")
-  public static int memoizedFib(int n, HashMap memo){
-    int f = 0;
-    if(memo.containsKey(n)){return (Integer)memo.get(n);}
-    if(n<=2){f = 1;}
-    else{
-      f = memoizedFib(n-1,memo) + memoizedFib(n-2,memo);
-      memo.put(n,f);
+  public static int memoizedFib(int n){
+    if(n<=2){return 1;}
+    int[] memo = new int[50];
+    memo[0] = 1;
+    memo[1] = 1;
+    for(int i=2; i<n; i++){
+      memo[i] = memo[i-2] + memo[i-1];
     }
-    return f;
+    return memo[n-1];
   }
 }

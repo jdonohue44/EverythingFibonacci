@@ -14,7 +14,7 @@ public class Fibonacci{
   
   //O(P^n) where P = golden ratio = (1 + sqrt(5))/2
   public static long recursiveFib(int n){
-    if(n>45){System.out.println("Too large for recursion! Im out!\n");return -1;}
+    if(n>45){System.out.print("Too large for recursion! Im out! ");return -1;}
     if(n<=2){return 1;}
     return recursiveFib(n-2)+recursiveFib(n-1);
   }

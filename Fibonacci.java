@@ -42,11 +42,11 @@ public class Fibonacci{
   
   //O(n) keeps record of solutions
   @SuppressWarnings("unchecked")
-  public static int memoizedFib(int n){
+  public static long memoizedFib(int n){
     if(n<=2){return 1;}
-    int[] memo = new int[1000];
-    memo[0] = 1;
-    memo[1] = 1;
+    long[] memo = new long[1000];
+    memo[0] = 1l;
+    memo[1] = 1l;
     for(int i=2; i<n; i++){
       memo[i] = memo[i-2] + memo[i-1];
     }

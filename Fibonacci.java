@@ -44,7 +44,7 @@ public class Fibonacci{
   @SuppressWarnings("unchecked")
   public static int memoizedFib(int n){
     if(n<=2){return 1;}
-    int[] memo = new int[50];
+    int[] memo = new int[1000];
     memo[0] = 1;
     memo[1] = 1;
     for(int i=2; i<n; i++){

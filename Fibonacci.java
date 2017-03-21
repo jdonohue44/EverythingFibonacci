@@ -3,7 +3,7 @@ public class Fibonacci{
 
   public static void main(String[] args){
     Scanner s = new Scanner(System.in);
-    System.out.println("Which element (0-45) of the Fibonacci sequence would you like?");
+    System.out.println("Which Fibonacci number would you like?");
     int n = s.nextInt();
     
     System.out.println(formulaicFib(n));
@@ -14,6 +14,7 @@ public class Fibonacci{
   
   //O(P^n) where P = golden ratio = (1 + sqrt(5))/2
   public static long recursiveFib(int n){
+    if(n>45){System.out.println("Too large for recursion! Im out!\n");return -1;}
     if(n<=2){return 1;}
     return recursiveFib(n-2)+recursiveFib(n-1);
   }
